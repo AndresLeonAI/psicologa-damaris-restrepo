@@ -36,6 +36,12 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Manrope:wght@400;500;600;700&display=swap">
   <link rel="preload" as="image" href="assets/hero-poster.jpg" fetchpriority="high">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("motion");
+      setTimeout(function () { if (!window.__motionReady) document.documentElement.classList.remove("motion"); }, 3000);
+    }
+  </script>
 
   <script type="application/ld+json">
   {
@@ -98,25 +104,25 @@
   <main id="contenido">
     <!-- HERO -->
     <section class="hero" id="inicio" data-parallax-root>
-      <div class="hero-media" data-depth="0.35" aria-hidden="true">
+      <div class="hero-media" aria-hidden="true">
         <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg">
           <source src="assets/hero.webm" type="video/webm">
           <source src="assets/hero.mp4" type="video/mp4">
         </video>
         <div class="hero-wash"></div>
       </div>
-      <svg class="hero-drop" data-depth="0.7" viewBox="0 0 200 200" aria-hidden="true">
+      <svg class="hero-drop" viewBox="0 0 200 200" aria-hidden="true">
         <path d="M100 18c34 46 58 74 58 106a58 58 0 0 1-116 0c0-32 24-60 58-106z"/>
       </svg>
-      <span class="hero-psi" data-depth="0.55" aria-hidden="true">Ψ</span>
+      <span class="hero-psi" aria-hidden="true">Ψ</span>
 
-      <div class="hero-copy" data-depth="-0.15">
+      <div class="hero-copy">
         <p class="eyebrow reveal">Psicóloga clínica · Psicoanálisis · Medellín y en línea</p>
-        <h1 class="reveal" style="--d:.08s">No necesitas tener todo <em>resuelto</em> para empezar.</h1>
+        <h1 data-split>No necesitas tener todo <em>resuelto</em> para empezar.</h1>
         <p class="lead reveal" style="--d:.16s">Soy Damaris Restrepo, psicóloga y magíster en Investigación Psicoanalítica. Acompaño a adolescentes, universitarios y adultos a comprender lo que están viviendo y a encontrar claridad y alivio.</p>
         <div class="cta-row reveal" style="--d:.24s">
-          <a class="btn btn-ink" href="https://wa.me/573137939898?text=Hola%20Damaris%2C%20vengo%20de%20tu%20p%C3%A1gina%20y%20quiero%20agendar%20mi%20primera%20consulta." target="_blank" rel="noopener">Escribir por WhatsApp</a>
-          <a class="btn btn-line" href="tel:+573137939898">Llamar · 313 793 9898</a>
+          <a class="btn btn-ink" data-magnetic href="https://wa.me/573137939898?text=Hola%20Damaris%2C%20vengo%20de%20tu%20p%C3%A1gina%20y%20quiero%20agendar%20mi%20primera%20consulta." target="_blank" rel="noopener">Escribir por WhatsApp</a>
+          <a class="btn btn-line" data-magnetic href="tel:+573137939898">Llamar · 313 793 9898</a>
         </div>
       </div>
       <a class="scroll-cue" href="#sobre-mi" aria-label="Ir a Sobre mí"><span></span></a>
@@ -125,7 +131,7 @@
     <!-- SOBRE MÍ -->
     <section class="about" id="sobre-mi">
       <div class="wrap about-grid">
-        <figure class="portrait" data-depth="0.12">
+        <figure class="portrait">
           <picture>
             <source srcset="assets/damaris-restrepo.webp" type="image/webp">
             <img src="assets/damaris-restrepo.jpg" alt="Retrato de Damaris Restrepo, psicóloga clínica" width="548" height="685" loading="lazy" decoding="async">
@@ -149,9 +155,9 @@
 
     <!-- CITA -->
     <section class="quote-band" aria-label="Reflexión">
-      <div class="ink-layer" data-depth="0.25" aria-hidden="true"></div>
+      <div class="ink-layer" aria-hidden="true"></div>
       <blockquote class="wrap reveal">
-        <p>“Los errores y las repeticiones pueden convertirse en culpas y reproches a sí mismo, o en aprendizajes de vida y oportunidades para alcanzar mejores versiones.”</p>
+        <p data-split>“Los errores y las repeticiones pueden convertirse en culpas y reproches a sí mismo, o en aprendizajes de vida y oportunidades para alcanzar mejores versiones.”</p>
         <cite>— Damaris Restrepo</cite>
       </blockquote>
     </section>
@@ -180,21 +186,27 @@
       </div>
     </section>
 
+    <!-- CINTA DE MOTIVOS -->
+    <section class="ticker" aria-label="Motivos de consulta">
+      <div class="ticker-row" data-ticker="1"><span>Ansiedad</span><span>Duelo</span><span>Tristeza</span><span>Burnout</span><span>Dependencia emocional</span><span>Ataques de pánico</span><span>Crisis</span><span>Baja autoestima</span><span>Conflictos de pareja</span><span>Insomnio</span></div>
+      <div class="ticker-row ticker-alt" data-ticker="-1"><span>Psicoanálisis</span><span>Psicología clínica</span><span>Terapia breve</span><span>Psicoterapia</span><span>Presencial en Medellín</span><span>En línea</span><span>Adolescentes</span><span>Universitarios</span><span>Adultos</span></div>
+    </section>
+
     <!-- OPINIONES -->
     <section class="reviews" id="opiniones">
       <div class="wrap">
         <p class="eyebrow reveal">Opiniones de pacientes · Doctoralia</p>
         <h2 class="reveal">En sus <em>propias palabras.</em></h2>
         <div class="review-grid">
-          <figure class="review reveal">
+          <figure class="review">
             <blockquote>“Muy buena profesional. Me sentí escuchada desde el primer momento y siempre me brindó un espacio seguro y de confianza. Agradezco mucho su acompañamiento.”</blockquote>
             <figcaption>Paciente</figcaption>
           </figure>
-          <figure class="review reveal" style="--d:.1s">
+          <figure class="review" style="--d:.1s">
             <blockquote>“Muy recomendada Damaris. Puntualidad, escucha respetuosa y atenta. Hace preguntas que llevan a cuestionarse y clarificar.”</blockquote>
             <figcaption>Paciente</figcaption>
           </figure>
-          <figure class="review reveal" style="--d:.2s">
+          <figure class="review" style="--d:.2s">
             <blockquote>“Las consultas fueron mi salvavidas en medio de la crisis, me reencontré conmigo misma y adquirí herramientas para afrontar la vida con una visión más clara u optimista del presente.”</blockquote>
             <figcaption>Paciente</figcaption>
           </figure>
@@ -206,7 +218,7 @@
     <!-- VISITA: horario + ubicación -->
     <section class="visit" id="visita">
       <div class="wrap visit-grid">
-        <div class="visit-card reveal">
+        <div class="visit-card">
           <p class="eyebrow">Horario</p>
           <h2>Con cita previa</h2>
           <p>La atención es con agenda. Elige el horario disponible en Doctoralia o escribe por WhatsApp para coordinarlo.</p>
@@ -215,8 +227,8 @@
             <a class="btn btn-line" href="https://www.doctoralia.co/perfil/damaris-restrepo#highlight-calendar-12260" target="_blank" rel="noopener">Agenda en línea</a>
           </div>
         </div>
-        <div class="visit-card map-card reveal" style="--d:.1s">
-          <div class="map-art" aria-hidden="true" data-depth="0.08">
+        <div class="visit-card map-card" style="--d:.1s">
+          <div class="map-art" aria-hidden="true">
             <svg viewBox="0 0 400 220"><path class="r1" d="M-10 150 C80 120 140 170 220 130 S360 60 420 90"/><path class="r2" d="M40 -10 C70 70 60 140 120 230"/><path class="r2" d="M260 -10 C250 80 300 150 280 230"/><path class="r3" d="M-10 60 C120 80 240 30 420 50"/><circle cx="214" cy="118" r="34" class="halo"/><circle cx="214" cy="118" r="8" class="pin"/></svg>
           </div>
           <p class="eyebrow">Ubicación</p>
@@ -244,6 +256,7 @@
         <li><a href="https://www.doctoralia.co/perfil/damaris-restrepo" target="_blank" rel="noopener">Doctoralia</a></li>
       </ul>
     </div>
+    <p class="foot-big" aria-hidden="true"><span>Damaris</span> <em>Restrepo</em></p>
     <p class="wrap foot-legal">© <span data-year>2026</span> Damaris Restrepo · Si estás en riesgo inminente, llama a la Línea 123.</p>
   </footer>
 
@@ -251,6 +264,8 @@
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.4 1.8 2.2 1.2 1.1 2.2 1.4 2.5 1.6.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
   </a>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="main.js" defer></script>
 </body>
 </html>

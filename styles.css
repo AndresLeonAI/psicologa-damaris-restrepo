@@ -85,8 +85,8 @@ p { margin: 0 0 1em; }
 @media (min-width: 900px) { .nav nav { display: flex; } }
 @media (max-width: 420px) { .brand small { display: none; } }
 
-/* Parallax: solo transform, gestionado por main.js */
-[data-depth] { will-change: transform; }
+/* Capas con parallax (GSAP, solo transform) */
+.hero-media, .hero-psi, .hero-drop, .hero-copy, .portrait, .ink-layer { will-change: transform; }
 
 /* Hero */
 .hero {
@@ -121,10 +121,12 @@ p { margin: 0 0 1em; }
   .hero-drop { right: 10%; top: 14%; }
 }
 
-/* Revelado al hacer scroll */
-.reveal { opacity: 0; transform: translateY(28px); transition: opacity 1s var(--ease) var(--d, 0s), transform 1.1s var(--ease) var(--d, 0s); }
-.reveal.is-in { opacity: 1; transform: none; }
-.hero .reveal { transition-duration: 1.2s; }
+/* Movimiento (GSAP). Los estados iniciales solo se ocultan cuando hay JS con
+   movimiento activo, así el contenido nunca queda invisible si algo falla. */
+.motion .reveal, .motion [data-split] { visibility: hidden; }
+.w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.wi { display: inline-block; will-change: transform; }
+.quote-band .w { overflow: visible; }
 
 /* Sobre mí */
 .about { padding: clamp(80px, 12vw, 160px) 0; }
@@ -179,8 +181,8 @@ p { margin: 0 0 1em; }
 .reviews { padding: clamp(80px, 12vw, 150px) 0; background: linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%); }
 .review-grid { display: grid; gap: 20px; margin-top: 3rem; }
 @media (min-width: 900px) { .review-grid { grid-template-columns: repeat(3, 1fr); } }
-.review { margin: 0; background: var(--paper); border: 1px solid var(--line); border-radius: 26px; padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem; transition: transform 0.6s var(--ease), box-shadow 0.6s var(--ease); }
-.review:hover { transform: translateY(-6px); box-shadow: 0 30px 60px -40px rgba(10, 61, 64, 0.55); }
+.review { margin: 0; background: var(--paper); border: 1px solid var(--line); border-radius: 26px; padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem; transition: box-shadow 0.6s var(--ease), border-color 0.6s; }
+.review:hover { border-color: rgba(26, 143, 140, 0.4); box-shadow: 0 30px 60px -40px rgba(10, 61, 64, 0.55); }
 .review blockquote { margin: 0; font: 400 1.18rem/1.5 var(--serif); color: var(--ink); }
 .review blockquote::before { content: "“"; display: block; font-size: 3.4rem; line-height: 0.6; color: var(--teal); margin-bottom: 0.6rem; }
 .review blockquote { quotes: none; }
@@ -227,9 +229,23 @@ p { margin: 0 0 1em; }
 .wa-float:hover { transform: scale(1.08); }
 .wa-float svg { width: 26px; fill: var(--paper); }
 
+/* Cinta de motivos */
+.ticker { overflow: hidden; padding: clamp(40px, 6vw, 70px) 0; background: var(--paper); border-block: 1px solid var(--line); }
+.ticker-row { display: flex; width: max-content; gap: clamp(28px, 4vw, 56px); padding-right: clamp(28px, 4vw, 56px); will-change: transform; }
+.ticker-row span { font: 300 clamp(2.2rem, 6vw, 4.6rem)/1.15 var(--serif); color: var(--ink); white-space: nowrap; display: inline-flex; align-items: center; gap: clamp(28px, 4vw, 56px); }
+.ticker-row span::after { content: "Ψ"; font-size: 0.45em; color: var(--clay); font-style: normal; }
+.ticker-alt span { font-style: italic; color: var(--teal); }
+
+/* Nombre gigante del pie */
+.foot-big { margin: 3rem 0 0; padding: 0 var(--gutter); font: 300 clamp(3.4rem, 15vw, 13rem)/0.9 var(--serif); letter-spacing: -0.04em; color: var(--paper); white-space: nowrap; overflow: hidden; }
+.foot-big em { color: var(--mint); font-weight: 300; }
+.foot-big span, .foot-big em { display: inline-block; will-change: transform; }
+
+.btn[data-magnetic], .nav .btn, .wa-float { will-change: transform; transition-property: background-color, color, box-shadow; }
+.btn[data-magnetic]:hover, .nav .btn:hover, .wa-float:hover { transform: none; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
-  [data-depth] { transform: none !important; }
 }
