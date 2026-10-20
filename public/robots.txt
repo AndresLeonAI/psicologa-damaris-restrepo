@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /_build/
+Disallow: /api/
+
+Sitemap: https://www.profesionaldamarisrestrepo.com/sitemap.xml
